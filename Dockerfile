@@ -51,4 +51,6 @@ RUN touch /usr/local/etc/php/conf.d/uploads.ini \
 #Serve the application
 
 RUN composer install
+RUN chmod +x deployment-service
 CMD php artisan migrate --force && php artisan optimize && php artisan cache:clear && php artisan config:clear && php artisan serve --host=0.0.0.0 --port=$PORT
+
